@@ -18,12 +18,28 @@
 	</div> %>
 	<%# <input type="submit" value="Submit"> %>
 <%# </form> %>
-<%= form_tag("/users", method: "post") do%>
-<%= label_tag(:username)%>
-<%= text_field_tag(:username)%>
-<%= label_tag(:email)%>
-<%= email_field_tag(:email)%>
-<%= label_tag(:password)%>
-<%= password_field_tag(:password)%>
-<%= submit_tag("Submit")%>
-<%end%>
+<%# <%= form_tag("/users", method: "post") do%>
+<%# <%= label_tag(:username)%>
+<%# <%= text_field_tag(:username)%>
+<%# <%= label_tag(:email)%>
+<%# <%= email_field_tag(:email)%>
+<%# <%= label_tag(:password)%>
+<%# <%= password_field_tag(:password)%>
+<%# <%= submit_tag("Submit")%>
+<%# <%end%>
+
+<%= form_with model: @user do |form| %>
+	<div>
+		<%= form.label :username, 'Choose your username' %>
+		<%= form.text_field :username, placeholder: 'John' %>
+	</div>
+	<div>
+		<%= form.label :email, 'Enter your valid email'%>
+		<%= form.email_field :email, placeholder: 'john@example.com'%>
+	</div>
+	<div>
+		<%= form.label :password, 'Enter a password' %>
+		<%= form.password_field :password%>
+	</div>
+	<%= form.submit%>
+<% end %>
